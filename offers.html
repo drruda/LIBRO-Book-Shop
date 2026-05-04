@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пропозиції</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="offers.css">
+</head>
+<body>
+    <header>
+        <div class="container header-flex">
+            <div class="logo">LIBRO<span>.</span></div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="#">Бестселери</a></li>
+                    <li><a href="offers.html">Пропозиції</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="LogIn.html" class="btn-login">Увійти</a>
+                <a href="SignUp.html" class="btn-register">Зареєструватися</a>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="offers-intro">
+            <h2 class="section-title">Наші спеціальні пропозиції</h2>
+            <p>Дізнайтеся більше про події та акції нашого книжкового простору.</p>
+        </section>
+    
+        <div class="slider">
+            <div class="item">
+                <img src="slide1.avif" alt="Slide 1">
+                <div class="slideText">Кафе-книгарня</div>
+            </div>
+    
+            <div class="item">
+                <img src="slide2.jpg" alt="Slide 2">
+                <div class="slideText">Шкільна література. Другий шанс</div>
+            </div>
+    
+            <div class="item">
+                <img src="slide3.jpg" alt="Slide 3">
+                <div class="slideText">Запрошуємо на наш книжковий клуб</div>
+            </div>
+    
+            <div class="item">
+                <img src="slide4.jpg" alt="Slide 4">
+                <div class="slideText">Книжковий обмін</div>
+            </div>
+    
+            <a class="prev" onclick="minusSlide()">&#10094;</a>
+            <a class="next" onclick="plusSlide()">&#10095;</a>
+    
+            <div class="slider-dots">
+                <span class="slider-dots_item" onclick="currentSlide(1)"></span>
+                <span class="slider-dots_item" onclick="currentSlide(2)"></span>
+                <span class="slider-dots_item" onclick="currentSlide(3)"></span>
+                <span class="slider-dots_item" onclick="currentSlide(4)"></span>
+            </div>
+        </div>
+
+        <section class="offers-details">
+            <div class="offer-item">
+                <h3>☕ Кафе-книгарня</h3>
+                <p>
+                    У нашому залі можна спокійно почитати щойно куплену книжку за чашкою кави. Це тихе місце, де зручно перепочити від
+                    міської метушні та переглянути кілька розділів у комфортній атмосфері.
+                </p>
+                <p>
+                    Для відвідувачів також діє невелика знижка 20% на будь-який напій, якщо ви купуєте книжку. Це гарна нагода одразу
+                    протестувати новинку разом із кавою чи чаєм за сусіднім столиком.
+                </p>
+            </div>
+        
+            <div class="offer-item">
+                <h3>📚 Освітній курс "Шкільна література. Другий шанс"</h3>
+                <p>
+                    Цей курс створений для дорослих, які хочуть поглянути на класичні твори без тиску шкільних оцінок та стандартних
+                    інтерпретацій. Ми пропонуємо переосмислити відомі сюжети через призму сучасного досвіду, знайти нові історичні контексти
+                    та зрозуміти, чому ці тексти залишаються актуальними через десятиліття.
+                </p>
+                <p>
+                    Це не просто лекції, а живий діалог про те, як змінюється наше сприйняття літератури з віком. Ми розбираємо приховані
+                    сенси та історичне тло подій, дозволяючи класиці зазвучати по-новому — щиро, глибоко та без зайвого офіціозу.
+                </p>
+                <button type="submit" class="btn-auth">Зареєструватися</button>
+            </div>
+        
+            <div class="offer-item">
+                <h3>🤝 Книжковий клуб</h3>
+                <p>
+                    Наш клуб — це територія вільних думок та щирого спілкування. Щосуботи ми збираємося для детального обговорення світових
+                    бестселерів, де кожен може поділитися власними враженнями від прочитаного. Атмосферу доповнюють чай та смаколики, а
+                    участь є цілком безкоштовною за умови попередньої реєстрації.
+                </p>
+                <p>
+                    Для тих, хто не має часу на підготовку, але прагне інтелектуального дозвілля, у нас діє особливий формат щочетверга. Ми
+                    разом читаємо коротке оповідання безпосередньо на зустрічі та одразу переходимо до його обговорення. Це ідеальний
+                    варіант, щоб отримати порцію натхнення посеред робочого тижня.
+                </p>
+                <button type="submit" class="btn-auth">Зареєструватися</button>
+            </div>
+        
+            <div class="offer-item">
+                <h3>🔄 Книжковий обмін</h3>
+                <p>
+                    Замість того, щоб просто зберігати прочитане на полицях, книжки можна принести до нас і обміняти на щось новеньке з
+                    нашої спільної бібліотеки. Це простий спосіб звільнити місце для нових історій і поділитися цікавими виданнями з іншими.
+                </p>
+                <p>
+                    Окрім вільного обміну, у нас доступна опція здачі книг під реалізацію. Щоб дізнатися всі юридичні та технічні деталі
+                    цього процесу, ви можете звернутися до менеджера безпосередньо в закладі або стежити за оновленнями та правилами в
+                    нашому Instagram-профілі.
+                </p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Libro Books. Твій затишний куточок для читання.</p>
+        </div>
+    </footer>
+    
+    <script src="offers.js"></script>
+</body>
+</html>

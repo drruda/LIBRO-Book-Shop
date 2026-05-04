@@ -1,0 +1,193 @@
+.offers-intro {
+    text-align: center;
+    padding: 50px 0 30px;
+}
+
+.slider {
+    max-width: 1000px;
+    position: relative;
+    margin: 0 auto 80px;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.item img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+}
+
+.slideText {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(178, 92, 64, 0.9);
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-radius: 5px;
+    text-align: center;
+    width: 80%;
+}
+
+/* Кнопки Назад/Вперед */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: var(--accent-dark);
+}
+
+/* Точки */
+.slider-dots {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    text-align: center;
+}
+
+.slider-dots_item {
+    cursor: pointer;
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.slider-dots_item:hover,
+.active {
+    background-color: var(--white);
+}
+
+/* Ховаємо слайди за замовчуванням */
+.item {
+    display: none;
+    animation: fade 1s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.offers-details {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin: 50px auto 80px;
+    max-width: 1000px;
+}
+
+.offer-item {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-left: 8px solid #B25C40;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.offer-item:hover {
+    transform: translateX(10px); /* зміщення вбік при наведенні */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.offer-item h3 {
+    color: var(--text-main);
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.offer-item p {
+    padding-bottom: 10px;
+    line-height: 1.5;
+    color: #4a4a4a;
+    font-size: 1.1rem;
+    text-align: justify;
+}
+
+.offer-item .btn-auth {
+    display: block;
+    margin: 30px auto 0;
+    align-self: center;
+    width: auto;
+    padding: 12px 40px;
+    margin-top: 20px;
+}
+
+
+/* Стилі для заголовка та тексту над слайдером */
+.offers-intro {
+    text-align: center;
+    padding: 60px 20px 40px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.offers-intro h2.section-title {
+    font-size: 2.8rem;
+    color: var(--text-main);
+    margin-bottom: 15px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Маленька декоративна лінія під заголовком */
+.offers-intro h2.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #B25C40;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.offers-intro p {
+    font-size: 1.2rem;
+    color: #7a7e71;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+main.container {
+    padding-bottom: 100px;
+}

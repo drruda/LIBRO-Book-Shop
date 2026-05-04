@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог | LIBRO</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="catalog.css">
+</head>
+<body>
+    <header>
+        <div class="container header-flex">
+            <div class="logo"><a href="homePage.html">LIBRO<span>.</span></a></div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="#">Бестселери</a></li>
+                    <li><a href="offers.html">Пропозиції</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="LogIn.html" class="btn-login">Увійти</a>
+                <a href="SignUp.html" class="btn-register">Зареєструватися</a>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container catalog-page">
+        <aside class="filters">
+            <h3>Фільтри</h3>
+            <div class="filter-group">
+                <h4>Жанри</h4>
+                <label class="checkbox-group"><input type="checkbox"> Фантастика</label>
+                <label class="checkbox-group"><input type="checkbox"> Класика</label>
+                <label class="checkbox-group"><input type="checkbox"> Психологія</label>
+                <label class="checkbox-group"><input type="checkbox"> Історія</label>
+            </div>
+            <div class="filter-group">
+                <h4>Ціна</h4>
+                <input type="range" min="100" max="2000" step="50" class="price-range">
+                <div class="price-inputs">
+                    <span>від 100 ₴</span>
+                    <span>до 2000 ₴</span>
+                </div>
+            </div>
+            <button class="btn-auth">Застосувати</button>
+        </aside>
+    
+        <section class="catalog-content">
+            <div class="catalog-header">
+                <h2>Всі книги</h2>
+                <select class="sort-select">
+                    <option>Спочатку нові</option>
+                    <option>Спочатку дешеві</option>
+                    <option>За рейтингом</option>
+                </select>
+            </div>
+    
+            <div class="book-grid">
+                <!-- Картка 1 -->
+                <div class="book-card">
+                    <div class="book-image"></div>
+                    <div class="book-info">
+                        <span class="category">Фантастика</span>
+                        <h3>Дюна</h3>
+                        <p class="author">Френк Герберт</p>
+                        <div class="card-footer">
+                            <span class="price">450 ₴</span>
+                            <button class="buy-icon">+</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Картка 2 -->
+                <div class="book-card">
+                    <div class="book-image"></div>
+                    <div class="book-info">
+                        <span class="category">Класика</span>
+                        <h3>Місто</h3>
+                        <p class="author">Валер'ян Підмогильний</p>
+                        <div class="card-footer">
+                            <span class="price">320 ₴</span>
+                            <button class="buy-icon">+</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Картка 3 -->
+                <div class="book-card">
+                    <div class="book-image"></div>
+                    <div class="book-info">
+                        <span class="category">Психологія</span>
+                        <h3>Мистецтво любити</h3>
+                        <p class="author">Еріх Фромм</p>
+                        <div class="card-footer">
+                            <span class="price">290 ₴</span>
+                            <button class="buy-icon">+</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Картка 4 (додаткова для сітки) -->
+                <div class="book-card">
+                    <div class="book-image"></div>
+                    <div class="book-info">
+                        <span class="category">Фантастика</span>
+                        <h3>Фундація</h3>
+                        <p class="author">Айзек Азімов</p>
+                        <div class="card-footer">
+                            <span class="price">510 ₴</span>
+                            <button class="buy-icon">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Libro Books. Твій затишний куточок для читання.</p>
+        </div>
+    </footer>
+</body>
+</html>
