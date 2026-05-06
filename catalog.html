@@ -28,22 +28,10 @@
     <main class="container catalog-page">
         <aside class="filters">
             <h3>Фільтри</h3>
-            <div class="filter-group">
-                <h4>Жанри</h4>
-                <label class="checkbox-group"><input type="checkbox"> Фантастика</label>
-                <label class="checkbox-group"><input type="checkbox"> Класика</label>
-                <label class="checkbox-group"><input type="checkbox"> Психологія</label>
-                <label class="checkbox-group"><input type="checkbox"> Історія</label>
-            </div>
-            <div class="filter-group">
-                <h4>Ціна</h4>
-                <input type="range" min="100" max="2000" step="50" class="price-range">
-                <div class="price-inputs">
-                    <span>від 100 ₴</span>
-                    <span>до 2000 ₴</span>
-                </div>
-            </div>
-            <button class="btn-auth">Застосувати</button>
+            <h4 class="filter-group">Жанри</h4>
+        
+            <div id="category-list"></div>
+            <button id="see-all" class="btn-auth" style="margin-top: 15px; width: 100%;">Скинути фільтри</button>
         </aside>
     
         <section class="catalog-content">
@@ -56,60 +44,7 @@
                 </select>
             </div>
     
-            <div class="book-grid">
-                <!-- Картка 1 -->
-                <div class="book-card">
-                    <div class="book-image"></div>
-                    <div class="book-info">
-                        <span class="category">Фантастика</span>
-                        <h3>Дюна</h3>
-                        <p class="author">Френк Герберт</p>
-                        <div class="card-footer">
-                            <span class="price">450 ₴</span>
-                            <button class="buy-icon">+</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Картка 2 -->
-                <div class="book-card">
-                    <div class="book-image"></div>
-                    <div class="book-info">
-                        <span class="category">Класика</span>
-                        <h3>Місто</h3>
-                        <p class="author">Валер'ян Підмогильний</p>
-                        <div class="card-footer">
-                            <span class="price">320 ₴</span>
-                            <button class="buy-icon">+</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Картка 3 -->
-                <div class="book-card">
-                    <div class="book-image"></div>
-                    <div class="book-info">
-                        <span class="category">Психологія</span>
-                        <h3>Мистецтво любити</h3>
-                        <p class="author">Еріх Фромм</p>
-                        <div class="card-footer">
-                            <span class="price">290 ₴</span>
-                            <button class="buy-icon">+</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Картка 4 (додаткова для сітки) -->
-                <div class="book-card">
-                    <div class="book-image"></div>
-                    <div class="book-info">
-                        <span class="category">Фантастика</span>
-                        <h3>Фундація</h3>
-                        <p class="author">Айзек Азімов</p>
-                        <div class="card-footer">
-                            <span class="price">510 ₴</span>
-                            <button class="buy-icon">+</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="book-grid" id="book-grid"></div>
         </section>
     </main>
     
@@ -118,5 +53,7 @@
             <p>&copy; 2026 Libro Books. Твій затишний куточок для читання.</p>
         </div>
     </footer>
+
+    <script src="catalog.js"></script>
 </body>
 </html>
