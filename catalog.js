@@ -1,99 +1,89 @@
-// Пошук елементів на сторінці
-const bookGrid = document.querySelector('.book-grid');
+const bookGrid = document.getElementById('book-grid');
 const categoryList = document.getElementById('category-list');
 const catalogTitle = document.querySelector('.catalog-header h2');
 
-// Функція для отримання та виведення всіх товарів
-async function fetchProducts() {
-    catalogTitle.innerText = "Всі товари";
+// Функція для виведення карток книг на екран
+function renderBooks(products) {
+    bookGrid.innerHTML = "";
     
-    const response = await fetch('https://dummyjson.com/products');
-    const data = await response.json();
-    const products = data.products;
-
-    bookGrid.innerHTML = "";
+    if (products.length === 0) {
+        bookGrid.innerHTML = "<p style='grid-column: 1/-1; text-align: center;'>Книг у цій категорії поки немає.</p>";
+        return;
+    }
 
     for (let i = 0; i < products.length; i++) {
         const product = products[i];
+        
+        // Визначаємо шлях до фото (якщо пусте в базі — беремо заглушку)
+        const imgSrc = product.image ? 'upload/' + product.image : 'upload/no_image.jpg';
+        
+        // Гарне відображення ціни
+        const priceDisplay = product.price === 0 ? "Безкоштовно / Обмін" : product.price + " ₴";
+
         const cardHtml = `
             <div class="book-card">
-                <div class="book-image" style="background-image: url('${product.thumbnail}'); background-size: cover;"></div>
+                <div class="book-image" style="background-image: url('${imgSrc}'); background-size: cover; background-position: center; height: 350px;"></div>
                 <div class="book-info">
                     <span class="category">${product.category}</span>
                     <h3>${product.title}</h3>
-                    <p class="author">${product.brand}</p>
+                    <p class="author">Автор: ${product.author} <br> <span style="font-size: 0.8rem; color: #999;">Вид: ${product.publisher}</span></p>
                     <div class="card-footer">
-                        <span class="price">${product.price} ₴</span>
+                        <span class="price">${priceDisplay}</span>
                         <button class="buy-icon" onclick="fetchProductById(${product.id})">+</button>
                     </div>
                 </div>
             </div>`;
-        bookGrid.innerHTML = bookGrid.innerHTML + cardHtml;
+        bookGrid.innerHTML += cardHtml;
     }
 }
 
-// Функція для завантаження товарів конкретної категорії
-async function fetchProductsByCategory(categoryName) {
+// Завантаження всіх товарів
+async function fetchProducts() {
+    catalogTitle.innerText = "Всі книги";
+    const response = await fetch('get_products.php');
+    const products = await response.json();
+    renderBooks(products);
+}
+
+// Завантаження книг за категорією (передаємо ID жанру)
+async function fetchProductsByCategory(categoryId, categoryName) {
     catalogTitle.innerText = categoryName;
-
-    const response = await fetch('https://dummyjson.com/products/category/' + categoryName);
-    const data = await response.json();
-    const products = data.products;
-
-    bookGrid.innerHTML = "";
-
-    for (let i = 0; i < products.length; i++) {
-        const product = products[i];
-        const cardHtml = `
-            <div class="book-card">
-                <div class="book-image" style="background-image: url('${product.thumbnail}'); background-size: cover;"></div>
-                <div class="book-info">
-                    <span class="category">${product.category}</span>
-                    <h3>${product.title}</h3>
-                    <p class="author">${product.brand}</p>
-                    <div class="card-footer">
-                        <span class="price">${product.price} ₴</span>
-                        <button class="buy-icon" onclick="fetchProductById(${product.id})">+</button>
-                    </div>
-                </div>
-            </div>`;
-        bookGrid.innerHTML = bookGrid.innerHTML + cardHtml;
-    }
+    const response = await fetch('get_products.php?category=' + categoryId);
+    const products = await response.json();
+    renderBooks(products);
 }
 
-// Функція для створення списку категорій
+// Створення списку радіокнопок-жанрів у сайдбарі
 async function fetchCategories() {
-    const response = await fetch('https://dummyjson.com/products/categories');
+    const response = await fetch('get_categories.php');
     const categories = await response.json();
 
     categoryList.innerHTML = "";
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < categories.length; i++) {
         const category = categories[i];
-        const slug = category.slug;
-        const name = category.name;
 
         const label = document.createElement('label');
         label.className = 'checkbox-group';
         label.style.display = 'block';
-        label.innerHTML = '<input type="radio" name="genre" value="' + slug + '"> ' + name;
+        label.innerHTML = `<input type="radio" name="genre" value="${category.id}"> ${category.name}`;
 
         label.addEventListener('change', function() {
-            fetchProductsByCategory(slug);
+            fetchProductsByCategory(category.id, category.name);
         });
 
         categoryList.appendChild(label);
     }
 }
 
-// Функція для отримання даних одного товару
+// Отримання опису книги по кліку на "+"
 async function fetchProductById(id) {
-    const response = await fetch('https://dummyjson.com/products/' + id);
+    const response = await fetch('get_products.php?id=' + id);
     const product = await response.json();
-    alert(product.title + " - " + product.description);
+    alert(product.title + "\n\nОпис книги:\n" + product.description);
 }
 
-// Запуск коду після завантаження сторінки та налаштування кнопок
+// Старт при завантаженні сторінки
 document.addEventListener('DOMContentLoaded', function() {
     fetchCategories();
     fetchProducts();

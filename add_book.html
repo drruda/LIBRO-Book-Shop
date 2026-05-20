@@ -19,7 +19,7 @@
                 <p>Додайте нову книгу в каталог</p>
             </div>
 
-            <form name="addBook" id="bookForm" action="add_book_process.php" method="POST" novalidate>
+            <form name="addBook" id="bookForm" action="add_book_process.php" method="POST" enctype="multipart/form-data" novalidate>
 
                 <div class="form-group">
                     <label for="book_title">Назва книги</label>
@@ -40,12 +40,12 @@
                 <div class="form-group compact-group">
                     <label for="book_genre">Жанр книги:</label>
                     <select id="book_genre" name="book_genre">
-                        <option value="Фентезі та фантастика">Фентезі та фантастика</option>
-                        <option value="Психологія та саморозвиток">Психологія та саморозвиток</option>
-                        <option value="Наукова література">Наукова література</option>
-                        <option value="Триллери та детективи">Триллери та детективи</option>
-                        <option value="Жахи">Жахи</option>
-                        <option value="Дитячі книги">Дитячі книги</option>
+                        <option value="1">Фентезі та фантастика</option>
+                        <option value="2">Психологія та саморозвиток</option>
+                        <option value="3">Наукова література</option>
+                        <option value="4">Триллери та детективи</option>
+                        <option value="5">Жахи</option>
+                        <option value="6">Дитячі книги</option>
                     </select>
                 </div>
 
@@ -83,13 +83,24 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="book_image">Обкладинка книги</label>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <input type="file" id="book_image" name="image" accept="image/*" required style="flex: 1;" >
+                        <button type="button" class="btn-register" style="padding: 8px 15px; border-radius: 8px; font-size: 0.85rem;"
+                            onclick="document.getElementById('book_image').value = '';">
+                            Скасувати
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label for="book_desc">Короткий опис книги</label>
                     <textarea id="book_desc" name="book_desc" rows="3"></textarea>
                 </div>
 
                 <p id="error" class="error-message"></p>
 
-                <button type="submit" class="btn-auth">Додати в каталог</button>
+                <button type="submit" class="btn-auth">Додати</button>
             </form>
 
             <div class="auth-footer">
