@@ -8,7 +8,7 @@ function validateForm() {
     // Функція для виводу помилки
     function showError(text) {
         errorMessange.textContent = text;
-        errorMessange.style.display = "block"; // ПРИМУСОВО ПОКАЗУЄМО БЛОК
+        errorMessange.style.display = "block";
     }
 
     // Перевірка на пусті поля
@@ -18,7 +18,7 @@ function validateForm() {
     }
 
     // Перевірка по name
-    let namePattern = /^[a-zA-Zа-яА-ЯіїєґІЇЄҐ]+\s[a-zA-Zа-яА-ЯіїєґІЇЄҐ]+$/; // регулярний вираз: тільки букви (укр/англ), один пробіл між двома словами
+    let namePattern = /^[a-zA-Zа-яА-ЯіїєґІЇЄҐ]+\s[a-zA-Zа-яА-ЯіїєґІЇЄҐ]+$/;
     if (!namePattern.test(name)) { 
         showError("Введіть своє прізвище та ім'я через пробіл");
         return false;
@@ -46,5 +46,5 @@ function validateForm() {
 
 // Якщо все правильно — ховаємо блок
     errorMessange.style.display = "none";
-    return true;
+    document.getElementById('registerForm').submit();
 }

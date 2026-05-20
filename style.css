@@ -1,6 +1,6 @@
 :root {
-    --bg-color: #D1D2D4;
-    --text-main: #616657;
+    --bg-color: #f5f4f4;
+    --text-main: #5b6050;
     --accent-dark: #B25C40;
     --accent-light: #C19386;
     --white: #ffffff;
@@ -193,7 +193,7 @@ footer {
 }
 
 .btn-auth:hover {
-    background-color: #616657;
+    background-color: #C19386;
 }
 
 .btn-auth:active {

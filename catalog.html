@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог | LIBRO</title>
+    <title>LIBRO | Каталог</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="catalog.css">
 </head>
@@ -13,14 +13,14 @@
             <div class="logo"><a href="homePage.html">LIBRO<span>.</span></a></div>
             <nav>
                 <ul class="nav-links">
+                    <li><a href="homePage.html">Головна</a></li>
                     <li><a href="catalog.html">Каталог</a></li>
-                    <li><a href="#">Бестселери</a></li>
                     <li><a href="offers.html">Пропозиції</a></li>
                 </ul>
             </nav>
             <div class="auth-buttons">
-                <a href="LogIn.html" class="btn-login">Увійти</a>
-                <a href="SignUp.html" class="btn-register">Зареєструватися</a>
+                <a href="logIn.html" class="btn-login">Увійти</a>
+                <a href="signUp.html" class="btn-register">Зареєструватися</a>
             </div>
         </div>
     </header>
@@ -32,11 +32,13 @@
         
             <div id="category-list"></div>
             <button id="see-all" class="btn-auth" style="margin-top: 15px; width: 100%;">Скинути фільтри</button>
+            <a href="add_book.html" class="btn-auth" style="display: block; margin-top: 15px; text-decoration: none; text-align: center; box-sizing: border-box;">Додати власну книгу</a>
         </aside>
     
         <section class="catalog-content">
             <div class="catalog-header">
                 <h2>Всі книги</h2>
+                
                 <select class="sort-select">
                     <option>Спочатку нові</option>
                     <option>Спочатку дешеві</option>

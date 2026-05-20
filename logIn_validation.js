@@ -16,7 +16,7 @@ function validateForm() {
     }
 
     // Перевірка по email
-    let emailPattern = /^[^\s@]+@[^\s@]+\.com$/;
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
         showError("Неправильний формат пошти");
         return false;
@@ -30,5 +30,5 @@ function validateForm() {
 
 // Якщо все правильно — ховаємо блок
     errorMessange.style.display = "none";
-    return true;
+    document.getElementById('loginForm').submit();
 }

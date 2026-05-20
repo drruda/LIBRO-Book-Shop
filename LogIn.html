@@ -15,15 +15,15 @@
                 <p>Створіть свій аккаунт для затишного читання</p>
             </div>
 
-            <form name="singUp" onsubmit="return validateForm()" novalidate>
+            <form name="logIn" id="loginForm" action="login_process.php" method="POST" novalidate>
                 <div class="form-group">
                     <label for="email">Електронна пошта</label>
-                    <input type="email" id="email" placeholder="example@mail.com">
+                    <input type="email" id="email" name="email" placeholder="example@mail.com">
                 </div>
 
                 <div class="form-group">
                     <label for="password">Пароль</label>
-                    <input type="password" id="password">
+                    <input type="password" id="password" name="password">
                 </div>
 
                 <p id="error" class="error-message"></p>
@@ -33,7 +33,7 @@
             <script src="logIn_validation.js"></script>
 
             <div class="auth-footer">
-                <p>Ще не маєте профіля? <a href="SignUp.html">Зареєструватися</a></p>
+                <p>Ще не маєте профіля? <a href="signUp.html">Зареєструватися</a></p>
             </div>
         </div>
     </div>
