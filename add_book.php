@@ -1,3 +1,4 @@
+<?php include_once 'auth_check.php'; ?>
 <!DOCTYPE html>
 <html lang="uk">
 
@@ -85,7 +86,7 @@
                 <div class="form-group">
                     <label for="book_image">Обкладинка книги</label>
                     <div style="display: flex; gap: 10px; align-items: center;">
-                        <input type="file" id="book_image" name="image" accept="image/*" required style="flex: 1;" >
+                        <input type="file" id="book_image" name="image" accept="image/*" required style="flex: 1;">
                         <button type="button" class="btn-register" style="padding: 8px 15px; border-radius: 8px; font-size: 0.85rem;"
                             onclick="document.getElementById('book_image').value = '';">
                             Скасувати
@@ -104,12 +105,14 @@
             </form>
 
             <div class="auth-footer">
-                <p><a href="catalog.html">Повернутися до каталогу</a></p>
+                <p><a href="catalog.php">Повернутися до каталогу</a></p>
             </div>
 
         </div>
     </div>
 
     <script src="addBook_validation.js"></script>
+    <script src="auth.js"></script>
 </body>
+
 </html>

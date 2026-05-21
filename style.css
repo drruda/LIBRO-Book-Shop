@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+
 :root {
     --bg-color: #f5f4f4;
     --text-main: #5b6050;
@@ -56,8 +58,23 @@ header {
     color: inherit;
 }
 
+.user-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    font-size: 0.9rem;
+}
+
+.user-name {
+    font-weight: 700;
+    color: #B25C40;
+}
+
 .nav-links {
     list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     gap: 30px;
 }
@@ -86,13 +103,23 @@ header {
 }
 
 .btn-register {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
     background-color: var(--text-main);
     color: var(--white);
     padding: 10px 20px;
     border-radius: 50px;
+    border: none;
     font-size: 0.9rem;
     transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn-register.file-select-btn,
+.file-select-btn {
+    color: var(--white) !important;
 }
 
 .btn-register:hover {
@@ -251,9 +278,11 @@ footer {
 }
 
 .book-image {
-    height: 350px;
-    background-color: #e5e5e5;
-    background-image: linear-gradient(45deg, #f0f0f0 25%, transparent 25%);
+    min-height: 350px;
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
 
 .book-info {

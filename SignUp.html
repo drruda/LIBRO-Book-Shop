@@ -39,10 +39,74 @@
                 </div>
             
                 <p id="error" class="error-message"></p>
-                <button type="submit" class="btn-auth">Зареєструватися</button>
+                <button type="button" id="registerButton" class="btn-auth" onclick="submitSignUpForm(event)">Зареєструватися</button>
             </form>
 
-            <script src="singUp_validation.js"></script>
+            <script>
+                async function submitSignUpForm(event) {
+                    event.preventDefault();
+                    const form = document.getElementById('registerForm');
+                    const errorMessage = document.getElementById('error');
+                    if (errorMessage) {
+                        errorMessage.style.display = 'none';
+                    }
+
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const password = document.getElementById('password').value.trim();
+                    const terms = document.getElementById('terms');
+
+                    const errorText = validateSignUpForm(name, email, password, terms);
+                    if (errorText) {
+                        if (errorMessage) {
+                            errorMessage.textContent = errorText;
+                            errorMessage.style.display = 'block';
+                        } else {
+                            alert(errorText);
+                        }
+                        return;
+                    }
+
+                    try {
+                        const formData = new FormData(form);
+                        const response = await fetch(form.action, {
+                            method: 'POST',
+                            body: formData,
+                        });
+                        const result = await response.json();
+                        if (!result.success) {
+                            throw new Error(result.message || 'Невідома помилка');
+                        }
+                        alert('Реєстрація успішна!');
+                        form.reset();
+                    } catch (error) {
+                        alert('Помилка реєстрації: ' + error.message);
+                    }
+                }
+
+                function validateSignUpForm(name, email, password, terms) {
+                    if (name === '' || email === '' || password === '') {
+                        return 'Будь ласка, заповніть усі поля!';
+                    }
+                    const namePattern = /^[a-zA-Zа-яА-ЯіїєґІЇЄҐ]+\s[a-zA-Zа-яА-ЯіїєґІЇЄҐ]+$/;
+                    if (!namePattern.test(name)) {
+                        return 'Введіть своє прізвище та імя через пробіл';
+                    }
+                    const emailPattern = /^[^\s@]+@[^\s@]+\.com$/;
+                    if (!emailPattern.test(email)) {
+                        return 'Неправильний формат пошти';
+                    }
+                    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+                    if (!passwordPattern.test(password)) {
+                        return 'Пароль має бути не менше 8 символів та містити велику літеру, малу літеру та спецсимвол';
+                    }
+                    if (!terms.checked) {
+                        return 'Ви повинні погодитися з умовами';
+                    }
+                    return '';
+                }
+            </script>
+            <script src="auth.js"></script>
             
             <div class="auth-footer">
                 <p>Вже маєте профіль? <a href="logIn.html">Увійти</a></p>

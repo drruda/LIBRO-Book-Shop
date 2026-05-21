@@ -16,8 +16,8 @@
             <nav>
                 <ul class="nav-links">
                     <li><a href="homePage.html">Головна</a></li>
-                    <li><a href="catalog.html">Каталог</a></li>
-                    <li><a href="offers.html">Пропозиції</a></li>
+                    <li><a href="catalog.php">Каталог</a></li>
+                    <li><a href="offers.php">Пропозиції</a></li>
                 </ul>
             </nav>
             <div class="auth-buttons">
@@ -33,7 +33,7 @@
                 <div class="hero-text">
                     <h1>Відкрийте нові світи на кожній сторінці</h1>
                     <p>Колекція найкращих творів від класики до сучасних графічних новел.</p>
-                    <a href="catalog.html" class="btn-primary">Переглянути каталог</a>
+                    <a href="catalog.php" class="btn-primary">Переглянути каталог</a>
                 </div>
             </div>
         </section>
@@ -41,42 +41,7 @@
         <section class="container products">
             <h2 class="section-title">Зараз читають</h2>
             <div class="book-grid">
-                <div class="book-card">
-                    <div class="book-image"></div>
-                    <div class="book-info">
-                        <span class="category">Фантастика</span>
-                        <h3>Дюна</h3>
-                        <p class="author">Френк Герберт</p>
-                        <div class="card-footer">
-                            <span class="price">450 ₴</span>
-                            <button class="buy-icon">+</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="book-card">
-                    <div class="book-image"></div>
-                    <div class="book-info">
-                        <span class="category">Класика</span>
-                        <h3>Місто</h3>
-                        <p class="author">Валер'ян Підмогильний</p>
-                        <div class="card-footer">
-                            <span class="price">320 ₴</span>
-                            <button class="buy-icon">+</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="book-card">
-                    <div class="book-image"></div>
-                    <div class="book-info">
-                        <span class="category">Психологія</span>
-                        <h3>Мистецтво любити</h3>
-                        <p class="author">Еріх Фромм</p>
-                        <div class="card-footer">
-                            <span class="price">290 ₴</span>
-                            <button class="buy-icon">+</button>
-                        </div>
-                    </div>
-                </div>
+                <!-- Картки будуть підвантажені динамічно з get_products.php -->
             </div>
         </section>
     </main>
@@ -87,6 +52,8 @@
         </div>
     </footer>
 
+    <script src="home.js"></script>
+    <script src="auth.js"></script>
 </body>
 
 </html>

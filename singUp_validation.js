@@ -1,50 +1,91 @@
-function validateForm() {
-    let name = document.getElementById('name').value.trim();
-    let email = document.getElementById('email').value.trim();
-    let password = document.getElementById('password').value.trim();
-    let terms = document.getElementById('terms');
-    let errorMessange = document.getElementById('error');
+let errorMessage;
+let formElement;
 
-    // Функція для виводу помилки
-    function showError(text) {
-        errorMessange.textContent = text;
-        errorMessange.style.display = "block";
+document.addEventListener('DOMContentLoaded', () => {
+    formElement = document.getElementById('registerForm');
+    errorMessage = document.getElementById('error');
+    const registerButton = document.getElementById('registerButton');
+    if (formElement) {
+        formElement.addEventListener('submit', event => event.preventDefault());
+    }
+    if (registerButton) {
+        registerButton.addEventListener('click', handleSignUpSubmit);
+    }
+    window.handleSignUpSubmit = handleSignUpSubmit;
+});
+
+async function handleSignUpSubmit(event) {
+    if (event) event.preventDefault();
+    if (!formElement) {
+        alert('Помилка реєстрації: не знайдено форму. Спробуйте оновити сторінку.');
+        return false;
     }
 
-    // Перевірка на пусті поля
+    if (errorMessage) {
+        errorMessage.style.display = 'none';
+    }
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const terms = document.getElementById('terms');
+
+    const errorText = validateFormData(name, email, password, terms);
+    if (errorText) {
+        showError(errorText);
+        return false;
+    }
+
+    try {
+        const formData = new FormData(formElement);
+        const response = await fetch(formElement.action, {
+            method: 'POST',
+            body: formData,
+        });
+
+        const result = await response.json();
+        if (!result.success) {
+            throw new Error(result.message || 'Невідома помилка');
+        }
+
+        alert('Реєстрація успішна!');
+        formElement.reset();
+        return false;
+    } catch (error) {
+        alert('Помилка реєстрації: ' + error.message);
+        return false;
+    }
+}
+
+function showError(text) {
+    if (!errorMessage) return;
+    errorMessage.textContent = text;
+    errorMessage.style.display = 'block';
+}
+
+function validateFormData(name, email, password, terms) {
     if (name === '' || email === '' || password === '') {
-        showError("Будь ласка, заповніть усі поля!");
-        return false;
+        return 'Будь ласка, заповніть усі поля!';
     }
 
-    // Перевірка по name
-    let namePattern = /^[a-zA-Zа-яА-ЯіїєґІЇЄҐ]+\s[a-zA-Zа-яА-ЯіїєґІЇЄҐ]+$/;
-    if (!namePattern.test(name)) { 
-        showError("Введіть своє прізвище та ім'я через пробіл");
-        return false;
+    const namePattern = /^[a-zA-Zа-яА-ЯіїєґІЇЄҐ]+\s[a-zA-Zа-яА-ЯіїєґІЇЄҐ]+$/;
+    if (!namePattern.test(name)) {
+        return 'Введіть своє прізвище та ім'я через пробіл';
     }
 
-    // Перевірка по email
-    let emailPattern = /^[^\s@]+@[^\s@]+\.com$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.com$/;
     if (!emailPattern.test(email)) {
-        showError("Неправильний формат пошти");
-        return false;
+        return 'Неправильний формат пошти';
     }
 
-    // Перевірка по password
-    let passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
     if (!passwordPattern.test(password)) {
-        showError("Пароль має бути не менше 8 символів та містити велику літеру, малу літеру та спецсимвол");
-        return false;
+        return 'Пароль має бути не менше 8 символів та містити велику літеру, малу літеру та спецсимвол';
     }
 
-    // Перевірка чекбокса
     if (!terms.checked) {
-        showError("Ви повинні погодитися з умовами");
-        return false;
+        return 'Ви повинні погодитися з умовами';
     }
 
-// Якщо все правильно — ховаємо блок
-    errorMessange.style.display = "none";
-    document.getElementById('registerForm').submit();
+    return '';
 }

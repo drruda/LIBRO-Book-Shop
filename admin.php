@@ -1,3 +1,4 @@
+<?php include_once 'auth_check.php'; ?>
 <!DOCTYPE html>
 <html lang="uk">
 
@@ -52,21 +53,23 @@
 
                         <div class="form-group" style="flex: 1; margin-left: 30px;">
                             <label for="form_image">Нова обкладинка</label>
-                            <input type="file" id="form_image" accept="image/*" style="padding: 7px;">
+                            <div class="file-field">
+                                <input type="file" id="form_image" accept="image/*" hidden>
+                                <label for="form_image" class="btn-register file-select-btn">Вибрати файл</label>
+                                <span id="selected-file-name">Файл не обрано</span>
+                            </div>
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="form_desc">Короткий опис</label>
-                        <textarea id="form_desc" rows="8"
-                            style="width: 100%; box-sizing: border-box; resize: vertical; min-height: 150px;"></textarea>
+                        <textarea id="form_desc" rows="8"></textarea>
                     </div>
 
                     <div class="form-buttons">
                         <button type="submit" class="btn-auth" style="width: auto; padding: 10px 25px;">Зберегти
                             зміни</button>
-                        <button type="button" id="cancel-edit" class="btn-register"
-                            style="border-radius: 8px;">Скасувати</button>
+                        <button type="button" id="cancel-edit" class="btn-register">Скасувати</button>
                     </div>
                 </form>
             </div>
@@ -94,6 +97,7 @@
     </main>
 
     <script src="admin.js"></script>
+    <script src="auth.js"></script>
 </body>
 
 </html>

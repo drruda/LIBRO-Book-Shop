@@ -55,6 +55,22 @@
     margin-bottom: 30px;
 }
 
+.search-form {
+    width: 100%;
+    max-width: 380px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: var(--white);
+    color: var(--text-main);
+    outline: none;
+    box-sizing: border-box;
+}
+
 .sort-select {
     padding: 8px 15px;
     border: 1px solid #ccc;

@@ -18,7 +18,7 @@ if (!$db_connect) {
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-// 1. ВИДАЛЕННЯ КНИГИ (DELETE)
+// 1. ВИДАЛЕННЯ КНИГИ
 if ($method === 'DELETE') {
     if (isset($_GET['id'])) {
         $id = intval($_GET['id']);
@@ -48,7 +48,7 @@ if ($method === 'DELETE') {
 
 // 2. ОНОВЛЕННЯ ДАНИХ (POST)
 if ($method === 'POST') {
-    // Дані тепер приходять через стандартний $_POST завдяки FormData
+    // Дані приходять через стандартний $_POST завдяки FormData
     if (isset($_POST['id'])) {
         $id = intval($_POST['id']);
         $title = htmlspecialchars($_POST['title']);
@@ -68,7 +68,7 @@ if ($method === 'POST') {
             if ($image_info !== false) {
                 $upload_dir = __DIR__ . '/upload/';
 
-                // Спочатку видаляємо стару унікальну обкладинку з папки, щоб не забивати диск
+                // Видаляємо стару унікальну обкладинку з папки
                 $old_img_query = "SELECT image FROM products WHERE productsid = $1";
                 $old_img_res = pg_query_params($db_connect, $old_img_query, array($id));
                 if ($old_img_res && $row = pg_fetch_assoc($old_img_res)) {
@@ -78,7 +78,7 @@ if ($method === 'POST') {
                     }
                 }
 
-                // Генеруємо нове унікальне ім'я
+                // Генеруємо нове ім'я
                 $name = uniqid('prod_');
                 $extension = image_type_to_extension($image_info[2]);
                 $format = str_replace('jpeg', 'jpg', $extension);

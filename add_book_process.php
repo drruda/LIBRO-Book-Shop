@@ -111,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result) {
         echo "<h1>Успіх!</h1>";
         echo "<p>Книгу «<strong>$title</strong>» успішно додано до бази даних PostgreSQL та збережено обкладинку!</p>";
-        echo "<p><a href='catalog.html'>Повернутися до каталогу</a></p>";
+        echo "<p><a href='catalog.php'>Повернутися до каталогу</a></p>";
     } else {
         echo "<h1>Помилка!</h1>";
         echo "<p>Не вдалося внести книгу в базу даних: " . pg_last_error($db_connect) . "</p>";
@@ -119,7 +119,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Закриваємо з'єднання
     pg_close($db_connect);
-} 
-else {
+} else {
     echo "Помилка: форму не було відправлено.";
 }

@@ -31,7 +31,6 @@ async function loadAdminTable() {
     });
 }
 
-// Початок редагування (показ форми)
 async function startEdit(id, title, author, publisher, price) {
     editSection.style.display = "block";
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -49,7 +48,7 @@ async function startEdit(id, title, author, publisher, price) {
     document.getElementById('form_desc').value = data.description;
 }
 
-// Надсилання оновлених даних форми в API (Змінено під FormData для підтримки фото)
+// Надсилання оновлених даних форми в API
 editForm.addEventListener('submit', async function(e) {
     e.preventDefault();
     
@@ -69,7 +68,7 @@ editForm.addEventListener('submit', async function(e) {
 
     const response = await fetch('admin_api.php', {
         method: 'POST',
-        body: formData // Передаємо FormData (заголовки Content-Type ставити не потрібно)
+        body: formData // Передаємо FormData
     });
     
     const result = await response.json();
@@ -109,6 +108,16 @@ function showStatus(text, color) {
 // Функція безпечного екранування тексту для onclick
 function escapeHtml(str) {
     return str.replace(/'/g, "\\'").replace(/"/g, "&quot;");
+}
+
+const fileInput = document.getElementById('form_image');
+const selectedFileName = document.getElementById('selected-file-name');
+if (fileInput && selectedFileName) {
+    fileInput.addEventListener('change', () => {
+        selectedFileName.textContent = fileInput.files.length > 0
+            ? fileInput.files[0].name
+            : 'Файл не обрано';
+    });
 }
 
 document.addEventListener('DOMContentLoaded', loadAdminTable);

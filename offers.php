@@ -1,5 +1,7 @@
+<?php include_once 'auth_check.php'; ?>
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="offers.css">
 </head>
+
 <body>
     <header>
         <div class="container header-flex">
@@ -14,8 +17,8 @@
             <nav>
                 <ul class="nav-links">
                     <li><a href="homePage.html">Головна</a></li>
-                    <li><a href="catalog.html">Каталог</a></li>
-                    <li><a href="offers.html">Пропозиції</a></li>
+                    <li><a href="catalog.php">Каталог</a></li>
+                    <li><a href="offers.php">Пропозиції</a></li>
                 </ul>
             </nav>
             <div class="auth-buttons">
@@ -24,37 +27,37 @@
             </div>
         </div>
     </header>
-    
+
     <main class="container">
         <section class="offers-intro">
             <h2 class="section-title">Наші спеціальні пропозиції</h2>
             <p>Дізнайтеся більше про події та акції нашого книжкового простору.</p>
         </section>
-    
+
         <div class="slider">
             <div class="item">
                 <img src="images/slide1.avif" alt="Slide 1">
                 <div class="slideText">Кафе-книгарня</div>
             </div>
-    
+
             <div class="item">
                 <img src="images/slide2.jpg" alt="Slide 2">
                 <div class="slideText">Шкільна література. Другий шанс</div>
             </div>
-    
+
             <div class="item">
                 <img src="images/slide3.jpg" alt="Slide 3">
                 <div class="slideText">Запрошуємо на наш книжковий клуб</div>
             </div>
-    
+
             <div class="item">
                 <img src="images/slide4.jpg" alt="Slide 4">
                 <div class="slideText">Книжковий обмін</div>
             </div>
-    
+
             <a class="prev" onclick="minusSlide()">&#10094;</a>
             <a class="next" onclick="plusSlide()">&#10095;</a>
-    
+
             <div class="slider-dots">
                 <span class="slider-dots_item" onclick="currentSlide(1)"></span>
                 <span class="slider-dots_item" onclick="currentSlide(2)"></span>
@@ -75,7 +78,7 @@
                     протестувати новинку разом із кавою чи чаєм за сусіднім столиком.
                 </p>
             </div>
-        
+
             <div class="offer-item">
                 <h3>📚 Освітній курс "Шкільна література. Другий шанс"</h3>
                 <p>
@@ -87,9 +90,8 @@
                     Це не просто лекції, а живий діалог про те, як змінюється наше сприйняття літератури з віком. Ми розбираємо приховані
                     сенси та історичне тло подій, дозволяючи класиці зазвучати по-новому — щиро, глибоко та без зайвого офіціозу.
                 </p>
-                <button type="submit" class="btn-auth">Зареєструватися</button>
             </div>
-        
+
             <div class="offer-item">
                 <h3>🤝 Книжковий клуб</h3>
                 <p>
@@ -102,9 +104,8 @@
                     разом читаємо коротке оповідання безпосередньо на зустрічі та одразу переходимо до його обговорення. Це ідеальний
                     варіант, щоб отримати порцію натхнення посеред робочого тижня.
                 </p>
-                <button type="submit" class="btn-auth">Зареєструватися</button>
             </div>
-        
+
             <div class="offer-item">
                 <h3>🔄 Книжковий обмін</h3>
                 <p>
@@ -119,13 +120,15 @@
             </div>
         </section>
     </main>
-    
+
     <footer>
         <div class="container">
             <p>&copy; 2024 Libro Books. Твій затишний куточок для читання.</p>
         </div>
     </footer>
-    
+
     <script src="offers.js"></script>
+    <script src="auth.js"></script>
 </body>
+
 </html>
